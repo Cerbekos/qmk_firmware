@@ -1,5 +1,5 @@
 /*
-Copyright 2021 Salicylic_Acid
+Copyright 2021 Cerbekos
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -56,7 +56,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|-----------------------------------------------------------------------+--------------------------------------------'
   )
 };
-//LED control
+
+//LED Options
+//LayerIndicator
 const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
   {3, 6, HSV_GREEN}
 );
@@ -99,6 +101,5 @@ bool led_update_kb(led_t led_state) {
         //writePin(D2, !led_state.num_lock);
         rgblight_set_layer_state(3, !led_state.num_lock);
     }
-
     return res;
 };

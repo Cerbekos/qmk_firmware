@@ -76,6 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define USB_MAX_POWER_CONSUMPTION 100
 #endif
 
+#define RGBLIGHT_SLEEP
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 
