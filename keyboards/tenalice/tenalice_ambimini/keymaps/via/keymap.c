@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //LED Options
 //LayerIndicator
 const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {3, 6, HSV_GREEN}
+  {3, 6, HSV_RED}
 );
 
 const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -68,19 +68,19 @@ const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 
 const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {3, 6, HSV_RED}
+  {3, 6, HSV_GREEN}
 );
 
 //led indicators
-const rgblight_segment_t PROGMEM my_layerNL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {3, 6, HSV_MAGENTA}
+const rgblight_segment_t PROGMEM my_layerCL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  {3, 6, HSV_YELLOW}
 );
 
 const rgblight_segment_t * const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_layer1_layer,
-    my_layer2_layer,
-    my_layer3_layer,
-    my_layerNL_layer
+  my_layerCL_layer,
+  my_layer3_layer,
+  my_layer2_layer,
+  my_layer1_layer
 );
 
 void keyboard_post_init_user(void) {
@@ -89,9 +89,9 @@ void keyboard_post_init_user(void) {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, 1));
-    rgblight_set_layer_state(1, layer_state_cmp(state, 2));
-    rgblight_set_layer_state(2, layer_state_cmp(state, 3));
+    rgblight_set_layer_state(3, layer_state_cmp(state, 1));
+    rgblight_set_layer_state(2, layer_state_cmp(state, 2));
+    rgblight_set_layer_state(1, layer_state_cmp(state, 3));
     return state;
 };
 
@@ -99,7 +99,7 @@ bool led_update_kb(led_t led_state) {
     bool res = led_update_user(led_state);
     if(res) {
         //writePin(D2, !led_state.num_lock);
-        rgblight_set_layer_state(3, !led_state.num_lock);
+        rgblight_set_layer_state(0, led_state.caps_lock);
     }
     return res;
 };

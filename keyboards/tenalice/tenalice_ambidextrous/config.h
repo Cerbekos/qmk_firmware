@@ -55,7 +55,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_ANIMATIONS
 
 #ifndef IOS_DEVICE_ENABLE
-  #define RGBLIGHT_LIMIT_VAL 90
+  #define RGBLIGHT_LIMIT_VAL 119
   #define RGBLIGHT_VAL_STEP 17
 #else
   #define RGBLIGHT_LIMIT_VAL 30
@@ -82,3 +82,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #define RGBLIGHT_LAYER_BLINK
+#define TAPPING_TOGGLE 2
