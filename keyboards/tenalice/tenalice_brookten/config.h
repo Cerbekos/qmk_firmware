@@ -53,6 +53,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D3
 #define RGBLED_SPLIT { 5, 2 }
 #define SPLIT_LAYER_STATE_ENABLE
+#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_BREATHING
+#define RGBLIGHT_DEFAULT_HUE 106
 
 #ifndef RGBLED_NUM
   #define RGBLED_NUM 7
