@@ -61,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT(
     //|--------------------------------------------------------------+--------------------------------------------------------------------------------------------------'
-        _______, _______, _______,  KC_F21,  KC_F22,  KC_F23,  KC_F24, RGB_M_P, RGB_M_B, RGB_M_R,          _______, _______, KC_MS_U, _______, _______, _______,   RESET,
+          DF(3), _______, _______,  KC_F21,  KC_F22,  KC_F23,  KC_F24, RGB_M_P, RGB_M_B, RGB_M_R,          _______, _______, KC_MS_U, _______, _______, _______,   RESET,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-        _______, _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, RGB_VAI, RGB_M_K,RGB_M_SW,RGB_M_SN, RGB_HUD, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,     _______,
+          DF(0), _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, RGB_VAI, RGB_M_K,RGB_M_SW,RGB_M_SN, RGB_HUD, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,     _______,
     //|--------+--------+--------+--------+--------+-------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
                  _______, _______, _______, _______, _______,RGB_VAD, RGB_M_K, RGB_M_X, RGB_M_G, RGB_HUI, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_BTN4, KC_BTN5, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -82,46 +82,46 @@ int CL_range_mode = 0;
 //RGBLayer setting
 //LED_No is #0-16:UG,17-29:BL
 const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_RED}
+  {17, 13, HSV_RED}
   //{21, 2, HSV_RED},
   //{24, 2, HSV_RED}
-  {21, 5, HSV_RED}
+  //{21, 5, HSV_RED}
 );
 
 const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_BLUE}
+  {17, 13, HSV_BLUE}
   //{21, 2, HSV_BLUE},
   //{24, 2, HSV_BLUE}
-  {21, 5, HSV_BLUE}
+  //{21, 5, HSV_BLUE}
 );
 
 const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_GREEN}
+  {17, 13, HSV_GREEN}
   //{21, 2, HSV_GREEN},
   //{24, 2, HSV_GREEN}
-  {21, 5, HSV_GREEN}
+  //{21, 5, HSV_GREEN}
 );
 
 //led indicators
 const rgblight_segment_t PROGMEM my_layerNL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_MAGENTA}
+  {17, 13, HSV_MAGENTA}
   //{21, 2, HSV_MAGENTA},
   //{24, 2, HSV_MAGENTA}
-  {21, 5, HSV_MAGENTA}
+  //{21, 5, HSV_MAGENTA}
 );
 
 const rgblight_segment_t PROGMEM my_layerCL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_YELLOW}
+  {17, 13, HSV_YELLOW}
   //{21, 2, HSV_YELLOW},
   //{24, 2, HSV_YELLOW}
-  {21, 5, HSV_YELLOW}
+  //{21, 5, HSV_YELLOW}
 );
 
 const rgblight_segment_t PROGMEM my_layerOFF_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  //{17, 13, HSV_OFF}
+  {17, 13, HSV_OFF}
   //{21, 2, HSV_OFF},
   //{24, 2, HSV_OFF}
-  {21, 5, HSV_OFF}
+  //{21, 5, HSV_OFF}
 );
 
 const rgblight_segment_t PROGMEM my_layerBlink_layer[] = RGBLIGHT_LAYER_SEGMENTS(
