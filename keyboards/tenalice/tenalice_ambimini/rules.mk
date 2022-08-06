@@ -25,3 +25,6 @@ AUDIO_ENABLE = no           # Audio output
 CUSTOM_MATRIX = yes
 
 SRC += matrix.c
+
+COMBO_ENABLE = yes
+TAP_DANCE_ENABLE = yes

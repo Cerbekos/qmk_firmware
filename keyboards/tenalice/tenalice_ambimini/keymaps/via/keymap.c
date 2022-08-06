@@ -18,12 +18,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "keymap_jp.h"
 
+//tapdance
+enum {
+    TD_SPC_ENT
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_SPC_ENT]  = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_ENT),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
     //|-----------------------------------------------------------------------+--------------------------------------------'
            KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,RGUI_T(KC_UP),LCTL_T(KC_RIGHT),KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-           KC_A,    KC_S,    KC_D,    KC_F,    KC_G,LALT_T(KC_LEFT), LSFT_T(KC_DOWN),LT(1,KC_ENT), KC_H, KC_J,  KC_K,  KC_L, KC_MINS,
+           KC_A,    KC_S,    KC_D,    KC_F,    KC_G,LALT_T(KC_LEFT), LSFT_T(KC_DOWN),LT(1,KC_ENT), KC_H, KC_J,  KC_K,  KC_L, TD(TD_SPC_ENT),
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
            KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        LT(2,KC_SPC),          KC_B,    KC_N,    KC_M, KC_COMM,RSFT_T(KC_DOT)
     //|-----------------------------------------------------------------------+--------------------------------------------'
@@ -103,3 +112,64 @@ bool led_update_kb(led_t led_state) {
     }
     return res;
 };
+
+//combo
+enum combos {
+  ZX_CUT,
+  ZC_COPY,
+  ZV_PAST,
+  CS_SAVE,
+  CA_ALLS,
+  CF_FIND,
+  CZ_UNDO,
+  WE_EXPL,
+  WD_DTOP,
+  WV_CLIP,
+  WT_WTAB,
+  AT_ATAB,
+  CT_EISU
+};
+
+const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
+const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
+const uint16_t PROGMEM cs_combo[] = {KC_C, KC_S, COMBO_END};
+const uint16_t PROGMEM ca_combo[] = {KC_C, KC_A, COMBO_END};
+const uint16_t PROGMEM cf_combo[] = {KC_C, KC_F, COMBO_END};
+const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM wd_combo[] = {KC_W, KC_D, COMBO_END};
+const uint16_t PROGMEM wv_combo[] = {KC_W, KC_V, COMBO_END};
+const uint16_t PROGMEM wt_combo[] = {KC_W, KC_T, COMBO_END};
+const uint16_t PROGMEM at_combo[] = {KC_A, KC_T, COMBO_END};
+const uint16_t PROGMEM ct_combo[] = {KC_C, KC_T, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [ZX_CUT] = COMBO(zx_combo, C(KC_X)),
+  [ZC_COPY] = COMBO(zc_combo, C(KC_C)),
+  [ZV_PAST] = COMBO(zv_combo, C(KC_V)),
+  [CS_SAVE] = COMBO(cs_combo, C(KC_S)),
+  [CA_ALLS] = COMBO(ca_combo, C(KC_A)),
+  [CF_FIND] = COMBO(cf_combo, C(KC_F)),
+  [WE_EXPL] = COMBO(we_combo, G(KC_E)),
+  [WD_DTOP] = COMBO(wd_combo, G(KC_D)),
+  [WV_CLIP] = COMBO(wv_combo, G(KC_V)),
+  [WT_WTAB] = COMBO(wt_combo, G(KC_TAB)),
+  [AT_ATAB] = COMBO(at_combo, A(KC_TAB)),
+  [CT_EISU] = COMBO(ct_combo, C(KC_T))
+};
+
+// combo switching
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case KC_F19:
+      if (record->event.pressed) {
+        return false;
+      } else {
+        tap_code16(CMB_TOG);
+        rgblight_blink_layer_repeat(3, 200, 2);
+      }
+    default:
+      return true;
+    }
+  };
+

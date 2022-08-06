@@ -79,7 +79,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+#define RGBLIGHT_LAYER_BLINK
 
 #define PERMISSVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 175
+
+//combo setting
+#define COMBO_COUNT 13

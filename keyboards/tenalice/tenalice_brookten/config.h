@@ -82,7 +82,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-
+#define RGBLIGHT_LAYER_BLINK
 
 // Encoders option
 #define ENCODERS_PAD_A { B5, D7 }

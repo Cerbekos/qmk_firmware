@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT(
     //|--------------------------------------------------------------+--------------------------------------------------------------------------------------------------'
-        _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,          _______, KC_PGUP,   KC_UP, KC_PGDN, _______, _______,          _______, _______, _______, _______,
+        _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,           KC_F24, KC_PGUP,   KC_UP, KC_PGDN, _______, _______,          _______, _______, _______, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
         KC_LALT,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,          KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT,     KC_BSPC,               _______, _______, _______, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -104,12 +104,17 @@ const rgblight_segment_t PROGMEM my_layerNL_layer[] = RGBLIGHT_LAYER_SEGMENTS(
   {0, 6, HSV_MAGENTA}
 );
 
+const rgblight_segment_t PROGMEM my_layerBlink_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  {0, 6, HSV_WHITE}
+);
+
 const rgblight_segment_t * const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_layerNL_layer,
     my_layerCL_layer,
     my_layer3_layer,
     my_layer2_layer,
-    my_layer1_layer
+    my_layer1_layer,
+    my_layerBlink_layer
 );
 
 void keyboard_post_init_user(void) {
@@ -133,6 +138,33 @@ bool led_update_kb(led_t led_state) {
     }
     return res;
 };
+
+// LED setting
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    // RGBLighting switching
+    case KC_F24:
+      if (record->event.pressed) {
+        return false;
+      } else {
+        layer_state_set(0);
+        if (rgblight_get_val() > 0) {
+          // RGB OFF
+          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+          rgblight_sethsv_noeeprom(0, 0, 0);
+          rgblight_blink_layer_repeat(5, 200, 2);
+          return false;
+        } else {
+          // RGB reload from eeprom
+          rgblight_reload_from_eeprom();
+          rgblight_blink_layer_repeat(5, 200, 2);
+          return false;
+        }
+      }
+    default:
+      return true;
+    }
+  };
 
 // endoder setting
 bool encoder_update_user(uint8_t index, bool clockwise) {
