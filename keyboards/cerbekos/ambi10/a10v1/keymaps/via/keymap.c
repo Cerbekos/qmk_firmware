@@ -87,13 +87,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT(
     //|------------------------------------'
-        RGB_M_P, RGB_M_B, RGB_M_R, 
+        _______, _______, _______, 
     //|--------+--------+--------+--------+|
-        RGB_M_K,RGB_M_SW,RGB_M_SN, XXXXXXX,
+        _______, _______, _______, XXXXXXX,
     //|--------+--------+--------+--------+|
-        RGB_M_K, RGB_M_G,RGB_M_TW, RGB_TOG,
+        _______, RGB_HUI, RGB_HUD, RGB_TOG,
     //|--------+--------+--------+--------+|
-                RGB_HUI, RGB_HUD
+                 RGB_MOD,RGB_RMOD                 
     //|------------------------------------'
     )
 };
