@@ -24,8 +24,3 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes
 SPLIT_KEYBOARD = yes
-
-SRC += matrix.c
-CUSTOM_MATRIX = lite
-
-DEBOUNCE_TYPE = sym_eager_pk

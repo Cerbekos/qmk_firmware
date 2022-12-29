@@ -44,11 +44,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
          KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,  KC_DEL,  KC_END, KC_PGDN,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-         C_CAPS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_MINS,  KC_ENT, XXXXXXX, XXXXXXX, XXXXXXX,
+         C_CAPS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_MINS,  KC_ENT, KC_XXXX, KC_XXXX, KC_XXXX,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-        KC_LSFT,       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT,        S_SLSH, XXXXXXX,   KC_UP, XXXXXXX,
+        KC_LSFT,       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT,        S_SLSH, KC_XXXX,   KC_UP, KC_XXXX,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-        KC_LCTL,    KC_LGUI,    KC_LALT,     L3_SPC,               L1_ENT,         KC_RALT,  TO(1),        KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT
+        KC_LCTL,    KC_LGUI,    KC_LALT,     L3_SPC,               L1_ENT,         KC_RALT,  TO(1),        KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGH
     //|--------------------------------------------------------------+-----------------------------------------------------------------------'
   ),
   [1] = LAYOUT(
@@ -59,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+---------+--------+--------+--------+--------+--------+--------+--------+--------|
         KC_LBRC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_RBRC, _______, _______, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-        KC_LPRN,    _______, _______, _______,  S_SCLN,  KC_EQL, KC_PPLS, KC_PMNS, KC_PAST, KC_PSLS,       KC_RPRN, _______, RGB_HUI, _______,
+        KC_LPRN,    _______, _______, _______,  S_SCLN,  KC_EQL, KC_PPLS, KC_PMNS, KC_PAST, KC_PSLS,       KC_LPRN, _______, RGB_HUI, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
         _______,    _______,    _______,    _______,              _______,         _______,  TO(2),        _______,RGB_RMOD, RGB_HUD, RGB_MOD
     //|--------------------------------------------------------------+-----------------------------------------------------------------------'
   ),
   [2] = LAYOUT(
     //|--------------------------------------------------------------+-----------------------------------------------------------------------'
-        _______,   _______, _______, _______, _______,       _______,  _______, _______, _______, _______, _______, _______, _______, QK_BOOT,
+        _______,   _______, _______, _______, _______,       _______,  _______, _______, _______, _______, _______, _______, _______,   Reset,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     //|--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -112,16 +112,15 @@ void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
 };
 
-// LayerIndicator 
+// LayerIndicator setting
 layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(4, layer_state_cmp(state, 1));
     rgblight_set_layer_state(3, layer_state_cmp(state, 2));
     rgblight_set_layer_state(2, layer_state_cmp(state, 3));
+    rgblight_set_layer_state(1, layer_state_cmp(state, 4));
     
     return state;
 };
 
-// LockIndicator
 bool led_update_kb(led_t led_state) {
     bool res = led_update_user(led_state);
     if(res) {
@@ -131,20 +130,3 @@ bool led_update_kb(led_t led_state) {
     return res;
 };
 
-// Endoder 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    keypos_t key;
-
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            key.row = 5;
-            key.col = 3;
-        } else {
-            key.row = 5;
-            key.col = 5;
-        }
-    }
-    action_exec((keyevent_t){.key = key, .pressed = true, .time = (timer_read() | 1)});
-    action_exec((keyevent_t){.key = key, .pressed = false, .time = (timer_read() | 1)});
-    return true;
-}

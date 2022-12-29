@@ -31,8 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 6
 
 // wiring of each half
-#define MATRIX_ROW_PINS { D7, E6, B4, B5, B6, F4 }
-#define MATRIX_COL_PINS { B2, B3, B1, F7, F6, F5 }
+#define MATRIX_ROW_PINS { D7, E6, B4, B5, B6 }
+#define MATRIX_COL_PINS { B2, B3, B1, F7, F5 }
 
 // DIODE_DIRECTION
 //#define DIODE_DIRECTION COL2ROW
@@ -85,8 +85,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* OLED */
 //#define OLED_FONT_H "keyboards/cerbekos/ambigl/agv2s/lib/glcdfont.c"
-
-/* ENCODER */
-#define ENCODERS_PAD_A { D1 }
-#define ENCODERS_PAD_B { D0 }
-#define ENCODER_RESOLUTION 4

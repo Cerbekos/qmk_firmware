@@ -21,28 +21,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0x7110
-#define PRODUCT_ID      0x1045
+#define PRODUCT_ID      0x1047
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Cerbekos
 #define PRODUCT         BROOKTEN
 
 /* key matrix size */
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 12
+#define MATRIX_ROWS 16
+#define MATRIX_COLS 7
 
 // wiring of each half
-#define MATRIX_ROW_PINS { D1, D0, D4, C6 }
-#define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, F4, F5, F6, F7, B1, B3 }
+#define MATRIX_ROW_PINS { D1, D0, D4, C6, F4, F5, F6, F7 }
+#define MATRIX_COL_PINS { D1, D0, D4, C6, F4, F5, F6 }
 #define UNUSED_PINS
 
-#define DIODE_DIRECTION CUSTOM_MATRIX
+#define DIODE_DIRECTION COL2ROW
 
 // split keyboard option
 #define SOFT_SERIAL_PIN D2
-#define MASTER_LEFT
-
-/* use sym_eager_pk */
-#define DEBOUNCE 50
+#define SPLIT_HAND_PIN B6
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -87,6 +84,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Encoders option
 #define ENCODERS_PAD_A { B5, D7 }
 #define ENCODERS_PAD_B { B4, E6 }
-#define ENCODERS_PAD_A_RIGHT { B4 }
-#define ENCODERS_PAD_B_RIGHT { B5 }
 #define ENCODER_RESOLUTION 4
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 3
