@@ -1,4 +1,4 @@
-// Copyright 2022 cerbekos (@cerbekos)
+// Copyright 2023 cerbekos (@cerbekos)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -19,3 +19,13 @@
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
 
+#define MATRIX_MASKED
+
+//#define BOOTMAGIC_LITE_ROW 0
+//#define BOOTMAGIC_LITE_COLUMN 1
+
+/* IF MASTER RIGHT */
+#define MASTER_RIGHT
+#define BOOTMAGIC_LITE_ROW 9
+#define BOOTMAGIC_LITE_COLUMN 1
+#define RGBLIGHT_LED_MAP { 6,0,1,2,3,4,5 }

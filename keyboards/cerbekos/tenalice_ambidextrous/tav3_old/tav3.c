@@ -14,22 +14,4 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#pragma once
-
-#include "quantum.h"
-
-#define LAYOUT( \
-    L00, L01, L02,     \
-    L10, L11, L12, L13,\
-    L20, L21, L22, L23,\
-         L31, L32      \
-  ) \
-  { \
-    {   L00,   L01,   L02, KC_NO,}, \
-    {   L10,   L11,   L12,   L13 }, \
-    {   L20,   L21,   L22,   L23 }, \
-    { KC_NO,   L31,   L32, KC_NO } \
-  }
-
-
-
+#include "tav3.h"

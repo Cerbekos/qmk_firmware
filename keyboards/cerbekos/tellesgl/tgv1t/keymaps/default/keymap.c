@@ -1,3 +1,18 @@
+/* Copyright 2020 MudkipMao
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include QMK_KEYBOARD_H
 #include "keymap_japanese.h"
 
@@ -117,6 +132,20 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(4, layer_state_cmp(state, 1));
     rgblight_set_layer_state(3, layer_state_cmp(state, 2));
     rgblight_set_layer_state(2, layer_state_cmp(state, 3));
+    
+    switch(get_highest_layer(state)){
+        case 1:
+        case 2:
+            cocot_set_scroll_mode(true);
+            break;
+        case 3:
+            cocot_set_scroll_mode(false);
+            break;
+        case 4:
+        default:
+            cocot_set_scroll_mode(false);
+            break;
+      }      
     
     return state;
 };
@@ -255,3 +284,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_PLUS_PAST] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, plsast_finished, plsast_reset),
   [TD_PMNS_PSLS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mnssls_finished, mnssls_reset)
 };
+
+
+#ifdef OLED_ENABLE
+bool oled_task_user(void) {
+    oled_write_layer_state();
+    return false;
+}
+#endif

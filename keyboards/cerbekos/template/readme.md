@@ -1,6 +1,6 @@
-# cerbekos/tellesgl/tgv1s
+# cerbekos/template
 
-![cerbekos/tellesgl/tgv1s](imgur.com image replace me!)
+![cerbekos/template](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
@@ -10,11 +10,11 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    make cerbekos/tellesgl/tgv1s:default
+    make cerbekos/template:default
 
 Flashing example for this keyboard:
 
-    make cerbekos/tellesgl/tgv1s:default:flash
+    make cerbekos/template:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
