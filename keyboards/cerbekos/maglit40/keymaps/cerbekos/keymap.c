@@ -30,24 +30,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
         C_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_MINS, KC_BSPC,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  S_SLSH,
-                 KC_LGUI, KC_LALT, L3_SPC,  L2_DEL,           L1_ENT,  KC_SCLN, KC_RCTL
+                 KC_LGUI, KC_LALT, L3_SPC,  L2_DEL,           L1_ENT,  KC_SCLN, KC_RO
     ),
     [1] = LAYOUT(
         _______, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), _______,
-        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-        _______, _______, _______, _______, S_SCLN,  KC_PSLS, KC_PPLS, KC_PMNS, KC_PAST, KC_PSLS, _______,
+        KC_LBRC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RBRC,
+        KC_LSPO, _______, _______, _______, S_SCLN,  KC_EQL,  KC_PPLS, KC_PMNS, KC_PAST, KC_PSLS, KC_RSPC,
                  _______, _______, _______, _______,          _______, _______, _______
     ),
     [2] = LAYOUT(
-        QK_BOOT, _______, _______, _______, _______, _______, _______, _______, RGB_HUI, _______, _______, _______,
-        KC_CAPS, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_RMOD,_______, KC_QUOT,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                 _______, _______, _______, _______,          RGB_TOG, _______, _______
+        QK_BOOT, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_JYEN, _______,
+        KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______, KC_SCLN, KC_QUOT, KC_NUHS,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RO,
+                 _______, _______, _______, _______,          _______, _______, _______
     ),
     [3] = LAYOUT(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, KC_PGUP, KC_UP,   KC_PGDN, _______, _______,
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_INS, KC_PGUP, KC_UP,   KC_PGDN, _______, _______,
         KC_LALT, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______,
-        _______, _______, _______, _______, _______, _______, KC_END,  _______, _______, _______, _______,
+        _______, KC_F11,  KC_F12,  KC_PSCR, KC_SLCK, KC_PAUS, KC_END,  _______, _______, _______, _______,
                  _______, _______, _______, _______,          _______, _______, _______
     )
 };
@@ -92,3 +92,12 @@ bool led_update_user(led_t led_state) {
     rgblight_set_layer_state(1, led_state.caps_lock);
     return true;
 };
+
+//CAPS WORD
+void caps_word_set_user(bool active) {
+    if (active) {
+        rgblight_sethsv_range(HSV_YELLOW, 0, 1);
+    } else {
+        rgblight_sethsv_range(HSV_OFF, 0, 1);
+    }
+}
