@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-//#include "btkv2.h"
 
 const matrix_row_t matrix_mask[MATRIX_ROWS] = {
     0b1111111111111110,

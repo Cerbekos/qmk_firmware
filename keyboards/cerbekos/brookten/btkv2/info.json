@@ -143,8 +143,8 @@
         "enabled": true,
         "matrix_pins": {
             "right":{
-                "cols": ["GP27", "GP28", "GP29", "GP6", "GP7"],
-                "rows": ["GP27", "GP28", "GP29", "GP6", "GP7"]
+                "cols": ["GP27", "GP28", "GP29", "GP6", "GP7","NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"],
+                "rows": ["GP27", "GP28", "GP29", "GP6", "GP7","NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"]
             }
         },
         "encoder":{
