@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 #include "keymap_japanese.h"
 #include "quantum.h"  
-#include <stdio.h>
+#include <stdio.h> 
 
 /* tap dance */
 typedef enum {
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(
         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,             KC_END,  KC_PGUP, KC_UP,   KC_PGDN, _______,
         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,             KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, _______,
-        MS_EQL,  MA_PPLS, KC_PMNS, MG_PAST, KC_PSLS, DT_PRNT, KC_BSPC, KC_DEL,  S(KC_TAB),  KC_TAB
+        MS_EQL,  MA_PPLS, KC_PMNS, MG_PAST, KC_PSLS, KC_MUTE, KC_BSPC, KC_DEL,  S(KC_TAB),  KC_TAB
     ),
     [2] = LAYOUT(
         S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),          KC_SLSH, S_SLSH,  KC_INT3, _______, _______,
@@ -198,7 +198,7 @@ void SpcL1Ent_reset(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP: unregister_code(KC_SPC); break;
         case TD_SINGLE_HOLD: layer_off(1); break;
         case TD_DOUBLE_TAP: unregister_code(KC_ENT); break;
-        case TD_DOUBLE_HOLD: unregister_code(KC_LSFT); break;
+        case TD_DOUBLE_HOLD: unregister_code(KC_SPC); break;
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_SPC); break;
         default: break;
     }
@@ -485,6 +485,10 @@ bool caps_word_press_user(uint16_t keycode) {
         // Keycodes that continue Caps Word, with shift applied.
         case KC_A ... KC_Z:
         case KC_MINS:
+        case TD(PL2Min):
+        case TD(ComCtrScl):
+        case TD(DotSftSls):
+        case TD(EscCtrQ):
             add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
             return true;
 
@@ -493,14 +497,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_BSPC:
         case KC_DEL:
         case KC_UNDS:
-            return true;
-
-        // Keycodes that continue Caps Word, without shifting.
-        case TD(PL2Min):
-        case TD(ComCtrScl):
-        case TD(DotSftSls):
-        case TD(SpcL1Ent):
-        case TD(EscCtrQ):
             return true;
 
         default:

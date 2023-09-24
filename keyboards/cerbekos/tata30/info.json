@@ -89,7 +89,7 @@
     "build": {
         "debounce_type":"sym_eager_pk"
     },
-    "debounce": 75,
+    "debounce": 50,
     "caps_word":{
         "enabled":true,
         "both_shifts_turns_on":false,
@@ -97,7 +97,7 @@
         "idle_timeout":10000
     },
     "tapping": {
-        "term": 190,
+        "term": 180,
         "permissive_hold":true
     }
     
