@@ -187,7 +187,7 @@ void SpcL1Ent_finished(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP: register_code(KC_SPC); break;
         case TD_SINGLE_HOLD: layer_on(1); break;
         case TD_DOUBLE_TAP: register_code(KC_ENT); break;
-        case TD_DOUBLE_HOLD: register_code(KC_LSFT); break;
+        case TD_DOUBLE_HOLD: register_code(KC_SPC); break;
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_SPC); register_code(KC_SPC); break;
         default: break;
     }
