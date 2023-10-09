@@ -1,0 +1,77 @@
+{
+    "manufacturer": "cerbekos",
+    "keyboard_name": "Ambi10",
+    "maintainer": "cerbekos",
+    "bootloader": "rp2040",
+    "diode_direction": "COL2ROW",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": false,
+        "rgblight": true        
+    },
+    "matrix_pins": {
+        "cols": ["GP3", "GP4", "GP2", "GP1"],
+        "rows": ["GP29", "GP6", "GP7", "GP0"]
+    },
+    "processor": "RP2040",
+    "url": "",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x1047",
+        "vid": "0x7110"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix":[0,0], "x":-1.0, "y":-2.5}, 
+                {"matrix":[0,1], "x":0, "y":-2.5}, 
+                {"matrix":[0,2], "x":1, "y":-2.5}, 
+                {"matrix":[1,0], "x":-1.0, "y":-1.5}, 
+                {"matrix":[1,1], "x":0, "y":-1.5}, 
+                {"matrix":[1,2], "x":1, "y":-1.5}, 
+                {"matrix":[1,3], "x":2, "y":-1.5}, 
+                {"matrix":[2,0], "x":-1.0, "y":-0.5}, 
+                {"matrix":[2,1], "x":0, "y":-0.5}, 
+                {"matrix":[2,2], "x":1, "y":-0.5}, 
+                {"matrix":[2,3], "x":2, "y":-0.5}, 
+                {"matrix":[3,1], "x":0, "y":0.5}, 
+                {"matrix":[3,2], "x":1, "y":0.5}
+            ]
+        }
+    },
+    "rgblight": {
+        "led_count": 13,
+        "pin": "GP28",
+        "animations":{
+            "breathing": true,
+            "rainbow_mood": true,
+            "rainbow_swirl": true,
+            "snake": true,
+            "knight": true,
+            "christmas": true,
+            "alternating": true,
+            "twinkle": true
+        },
+        "sleep": true,
+        "max_brightness": 128,
+        "hue_steps": 8,
+        "saturation_steps": 8,
+        "layers": {
+            "blink": true,
+            "enabled": true,
+            "override_rgb": true
+        }
+    },
+    "WS2812": {
+        "driver":"vendor",
+        "pin":"GP28"
+    },
+    "tapping": {
+        "term": 180,
+        "permissive_hold":true
+    }
+}
