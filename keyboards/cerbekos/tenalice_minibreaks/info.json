@@ -103,6 +103,7 @@
             "breathing": true,
             "rainbow_mood": true,
             "rainbow_swirl": true,
+            "knight": true,
             "twinkle": true
         },
         "sleep": true,
@@ -130,8 +131,8 @@
     "debounce": 50,
     "caps_word":{
         "enabled":true,
-        "both_shifts_turns_on":false,
-        "double_tap_shift_turns_on":false,
+        "both_shifts_turns_on":true,
+        "double_tap_shift_turns_on":true,
         "idle_timeout":10000
     },
     "tapping": {
