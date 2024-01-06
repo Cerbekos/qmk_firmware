@@ -81,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [1] = LAYOUT(
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, _______, KC_PGUP, KC_UP,   KC_PGDN, KC_INT3, _______,
-        _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______,
+        KC_LALT, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______,
         _______, _______, _______, KC_PSCR, KC_SCRL, KC_PAUS, _______, KC_END,  _______, KC_SCLN, KC_QUOT, KC_APP,  _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_DOWN, KC_PGUP, KC_END
     ),
     [2] = LAYOUT(
         _______, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), _______, S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), _______,
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [4] = LAYOUT(
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, KC_PGUP, KC_UP,   KC_PGDN, KC_INT3, KC_LBRC, KC_RBRC, _______,
         KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSPC, _______, _______, _______,
-        _______, _______, KC_PSCR, KC_SCRL, KC_PAUS, KC_END,  _______, KC_SCLN, KC_QUOT, S_SLSH,  _______, _______, _______,
+        KC_TAB,  _______, KC_PSCR, KC_SCRL, KC_PAUS, KC_END,  _______, KC_SCLN, KC_QUOT, S_SLSH,  _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
     [5] = LAYOUT(
@@ -169,6 +169,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             default: break;
         }
         if (host_keyboard_led_state().caps_lock) {
+            if (HAS_FLAGS(g_led_config.flags[i], 0x08)) rgb_matrix_set_color(i, RGB_YELLOW);
+        }
+        if (is_caps_word_on()){
             if (HAS_FLAGS(g_led_config.flags[i], 0x08)) rgb_matrix_set_color(i, RGB_YELLOW);
         }
     }
@@ -311,30 +314,6 @@ bool caps_word_press_user(uint16_t keycode) {
             return false;  // Deactivate Caps Word.
     }
 }
-
-led_config_t g_led_config = { {
-  // Key Matrix to LED Index
-  {NO_LED,0,1,2,3,4,5,6},
-  {7,NO_LED,8,9,10,11,12,13},
-  {14,15,NO_LED,16,17,18,19,20},
-  {21,22,23,NO_LED,24,25,26,27},
-  {28,29,30,31,NO_LED,32,33,34},
-  {35,36,37,38,39,NO_LED,40,41},
-  {42,43,44,45,46,47,NO_LED,48},
-  {49,50,51,NO_LED,NO_LED,NO_LED,NO_LED,NO_LED}
-}, {
-  // LED Index to Physical Position
-  { 0,0 },{ 19,0 },{ 37,0 },{ 56,0 },{ 75,0 },{ 93,0 },{ 112,0 },{ 131,0 },{ 149,0 },{ 168,0 },{ 187,0 },{ 205,0 },{ 224,0 },
-  { 0,21 },{ 19,21 },{ 37,21 },{ 56,21 },{ 75,21 },{ 93,21 },{ 112,21 },{ 131,21 },{ 149,21 },{ 168,21 },{ 187,21 },{ 205,21 },{ 224,21 },
-  { 0,43 },{ 19,43 },{ 37,43 },{ 56,43 },{ 75,43 },{ 93,43 },{ 112,43 },{ 131,43 },{ 149,43 },{ 168,43 },{ 187,43 },{ 205,43 },{ 224,43 },
-  { 0,64 },{ 19,64 },{ 37,64 },{ 56,64 },{ 75,64 },{ 93,64 },{ 112,64 },{ 131,64 },{ 149,64 },{ 168,64 },{ 187,64 },{ 205,64 },{ 224,64 }
-}, {
-  // LED Index to Flag
-  1,4,4,4,4,4,8,4,4,4,4,4,1,
-  1,4,4,4,4,4,8,4,4,4,4,4,1,
-  1,4,4,4,4,4,8,4,4,4,4,4,1,
-  1,1,1,1,1,1,8,1,1,1,1,1,1
-} };
 
 // Defalut lyout change
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
